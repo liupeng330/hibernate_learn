@@ -57,8 +57,8 @@ public class StockEntity
     // MappedBy allows you to still link from the table not containing the constraint to the other table.
     // MappedBy的含义就是，对于1对多关系，一般出现在1的一边，表示通知hibernate：这个1对多关系的外键不在我这个表中
     // 在对面的那个表中实体对象的属性用mappedBy指定的那个。
-    // 而当前1这边的实体，也向通过这种关联关系获取到对面实体的对象集合，就需要像下面这样，使用@OneToMany的mappedBy。
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock")
+    // 而当前1这边的实体，也希望通过这种关联关系获取到对面实体的对象集合，就需要像下面这样，使用@OneToMany的mappedBy。
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "stock", cascade = CascadeType.ALL)
     public Set<StockDailyRecordEntity> getStockDailyRecordEntities()
     {
         return stockDailyRecordEntities;

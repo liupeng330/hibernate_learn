@@ -88,7 +88,9 @@ public class StockDailyRecordEntity
         this.date = date;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // 对于多对1关系, 多的一方为关系维护端，
+    // 关系维护端负责外键记录的更新，关系被维护端没有权利更新外键记录
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "STOCK_ID", nullable = false)
     public StockEntity getStock()
     {
