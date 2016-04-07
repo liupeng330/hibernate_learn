@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - heika_new@172.16.2.38 driver - hibernate_test@localhost" uuid="1762b683-67bf-451d-8050-05fca59a0a1a">
+    <database-info product="MySQL" version="5.5.47-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.36 ( Revision: 4fc1f969f740409a4e03750316df2c0e429f3dc8 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="hibernate_test"/>
+      <table id="2" parent="1" name="stock"/>
+      <table id="3" parent="1" name="stock_daily_record"/>
+      <column id="4" parent="2" name="STOCK_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="5" parent="2" name="STOCK_CODE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="6" parent="2" name="STOCK_NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="7" parent="2" name="PRIMARY">
+        <columns>STOCK_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="8" parent="3" name="DAILY_RECORD_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="9" parent="3" name="PRICE_OPEN">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="10" parent="3" name="PRICE_CLOSE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="11" parent="3" name="PRICE_CHANGE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="12" parent="3" name="VOLUME">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="13" parent="3" name="DATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="14" parent="3" name="STOCK_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="15" parent="3" name="STOCK_ID_idx">
+        <columns>STOCK_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="16" parent="3" name="PRIMARY">
+        <columns>DAILY_RECORD_ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="17" parent="3" name="STOCK_ID">
+        <columns>STOCK_ID</columns>
+        <ref-key>~.stock.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

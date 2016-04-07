@@ -10,8 +10,8 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123</property>
     <property name="show_sql">true</property>
-      <mapping class="pengliu.me.hibernate_relation.dao.domain.StockEntity"/>
-      <mapping class="pengliu.me.hibernate_relation.dao.domain.StockDailyRecordEntity"/>
+      <mapping class="pengliu.me.hibernate_relation.one_to_many.domain.StockEntity"/>
+      <mapping class="pengliu.me.hibernate_relation.one_to_many.domain.StockDailyRecordEntity"/>
       <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
