@@ -1,4 +1,4 @@
-package pengliu.me.hibernate_relation.one_to_many.domain;
+package pengliu.me.hibernate_relation.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -1,4 +1,4 @@
-package pengliu.me.hibernate_relation.one_to_many.domain;
+package pengliu.me.hibernate_relation.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,6 +12,7 @@ public class StockEntity
     private String stockCode;
     private String stockName;
     private Set<StockDailyRecordEntity> stockDailyRecordEntities = new HashSet<StockDailyRecordEntity>();
+    private Set<Category> categories = new HashSet<Category>();
 
     @Id
     @Column(name = "STOCK_ID")
@@ -59,6 +60,20 @@ public class StockEntity
     public void setStockDailyRecordEntities(Set<StockDailyRecordEntity> stockDailyRecordEntities)
     {
         this.stockDailyRecordEntities = stockDailyRecordEntities;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "stock_category", joinColumns = {
+            @JoinColumn(name = "STOCK_ID", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "CATEGORY_ID", nullable = false, updatable = false)})
+    public Set<Category> getCategories()
+    {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories)
+    {
+        this.categories = categories;
     }
 }
 

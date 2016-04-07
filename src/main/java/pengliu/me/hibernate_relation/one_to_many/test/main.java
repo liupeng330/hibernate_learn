@@ -3,11 +3,9 @@ package pengliu.me.hibernate_relation.one_to_many.test;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pengliu.me.hibernate_relation.HibernateUtil;
-import pengliu.me.hibernate_relation.one_to_many.domain.StockDailyRecordEntity;
-import pengliu.me.hibernate_relation.one_to_many.domain.StockEntity;
+import pengliu.me.hibernate_relation.domain.StockDailyRecordEntity;
+import pengliu.me.hibernate_relation.domain.StockEntity;
 
-import java.util.Date;
-import java.sql.Timestamp;
 import java.util.List;
 
 public class main

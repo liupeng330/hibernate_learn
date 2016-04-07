@@ -10,59 +10,105 @@
       <schema id="1" name="hibernate_test"/>
       <table id="2" parent="1" name="stock"/>
       <table id="3" parent="1" name="stock_daily_record"/>
-      <column id="4" parent="2" name="STOCK_ID">
+      <table id="4" parent="1" name="Category"/>
+      <table id="5" parent="1" name="stock_category"/>
+      <column id="6" parent="2" name="STOCK_ID">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="5" parent="2" name="STOCK_CODE">
+      <column id="7" parent="2" name="STOCK_CODE">
         <mandatory>1</mandatory>
         <data-type>varchar(45)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <column id="6" parent="2" name="STOCK_NAME">
+      <column id="8" parent="2" name="STOCK_NAME">
         <mandatory>1</mandatory>
         <data-type>varchar(45)</data-type>
         <default-expression>&apos;&apos;</default-expression>
       </column>
-      <key id="7" parent="2" name="PRIMARY">
+      <key id="9" parent="2" name="PRIMARY">
         <columns>STOCK_ID</columns>
         <primary>1</primary>
       </key>
-      <column id="8" parent="3" name="DAILY_RECORD_ID">
+      <column id="10" parent="3" name="DAILY_RECORD_ID">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="9" parent="3" name="PRICE_OPEN">
+      <column id="11" parent="3" name="PRICE_OPEN">
         <mandatory>1</mandatory>
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="10" parent="3" name="PRICE_CLOSE">
+      <column id="12" parent="3" name="PRICE_CLOSE">
         <mandatory>1</mandatory>
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="11" parent="3" name="PRICE_CHANGE">
+      <column id="13" parent="3" name="PRICE_CHANGE">
         <mandatory>1</mandatory>
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="12" parent="3" name="VOLUME">
+      <column id="14" parent="3" name="VOLUME">
         <data-type>varchar(45)</data-type>
       </column>
-      <column id="13" parent="3" name="DATE">
+      <column id="15" parent="3" name="DATE">
         <data-type>datetime</data-type>
       </column>
-      <column id="14" parent="3" name="STOCK_ID">
+      <column id="16" parent="3" name="STOCK_ID">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <index id="15" parent="3" name="STOCK_ID_idx">
+      <index id="17" parent="3" name="STOCK_ID_idx">
         <columns>STOCK_ID</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="16" parent="3" name="PRIMARY">
+      <key id="18" parent="3" name="PRIMARY">
         <columns>DAILY_RECORD_ID</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="17" parent="3" name="STOCK_ID">
+      <foreign-key id="19" parent="3" name="STOCK_ID">
+        <columns>STOCK_ID</columns>
+        <ref-key>~.stock.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="20" parent="4" name="CATEGORY_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="21" parent="4" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="22" parent="4" name="DESC">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="23" parent="4" name="PRIMARY">
+        <columns>CATEGORY_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="24" parent="5" name="STOCK_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="5" name="CATEGORY_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="26" parent="5" name="fk_stock_category_1_idx">
+        <columns>CATEGORY_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="27" parent="5" name="PRIMARY">
+        <columns>STOCK_ID
+CATEGORY_ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="28" parent="5" name="fk_stock_category_1">
+        <columns>CATEGORY_ID</columns>
+        <ref-key>~.Category.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="29" parent="5" name="fk_stock_category_2">
         <columns>STOCK_ID</columns>
         <ref-key>~.stock.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
